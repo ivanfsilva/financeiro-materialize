@@ -118,4 +118,19 @@ public class Entidade {
     public void setTitulos(List<Titulo> titulos) {
         this.titulos = titulos;
     }
+
+    @Override
+    public String toString() {
+        return "Entidade{" +
+                "codigo=" + codigo +
+                ", nome='" + nome + '\'' +
+                ", cpfOuCnpj='" + cpfOuCnpj + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", estado='" + estado + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
