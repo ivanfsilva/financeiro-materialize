@@ -1,5 +1,7 @@
 package br.com.ivanfsilva.financeiro.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +14,21 @@ public class Entidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
+    @NotBlank
     @Column(length = 60)
     private String nome;
 
+    @NotBlank
     @Column(length = 20, name = "cpf_ou_cnpj")
     private String cpfOuCnpj;
 
+    @NotBlank
     @Column(length = 80)
     private String endereco;
 
     @Column(length = 60)
     private String cidade;
+
 
     @Column(length = 60)
     private String bairro;
@@ -30,9 +36,11 @@ public class Entidade {
     @Column(length = 20)
     private String estado;
 
+    @NotBlank
     @Column(length = 20)
     private String telefone;
 
+    @NotBlank
     @Column(length = 100, name = "e_mail")
     private String email;
 
