@@ -1,12 +1,14 @@
 package br.com.ivanfsilva.financeiro.controller;
 
 import br.com.ivanfsilva.financeiro.model.Entidade;
+import br.com.ivanfsilva.financeiro.repository.Entidades;
 import br.com.ivanfsilva.financeiro.service.EntidadesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
@@ -19,8 +21,11 @@ public class EntidadesController {
     @Autowired
     private EntidadesService entidadesService;
 
+    @Autowired
+    private Entidades entidades;
+
     @RequestMapping(value = "/novo")
-    public String novo(){
+    public String novo(Entidade entidade){
         return INDEX;
     }
 
@@ -28,15 +33,21 @@ public class EntidadesController {
     public String salvar(@Valid Entidade entidade, BindingResult result){
 
         if (result.hasErrors()){
-
             // TODO: Mostrar mensagem de erro
-            return novo();
+            return novo(entidade);
         }
 
         System.out.println("Entidade: " + entidade.toString());
         entidadesService.salvar(entidade);
 
-        return novo();
+        return "redirect:/entidades/novo";
+    }
+
+    @RequestMapping
+    public ModelAndView pesquisar(Entidade entidade){
+        ModelAndView mv = new ModelAndView("entidade/PesquisarEntidade");
+        mv.addObject("entidades", entidades.porNome(entidade.getNome()));
+        return mv;
     }
 
 }

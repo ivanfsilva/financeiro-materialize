@@ -19,25 +19,31 @@
                                 <form class="col s12" method="post" th:action="@{/entidades/novo}" th:object="${entidade}">
                                     <div class="row">
                                         <div class="input-field col m6 s12">
-                                            <input id="nome" type="text" class="validate" name="nome"/>
-                                            <label for="nome">Nome</label>
+                                            <input id="nome" type="text" class="validate" th:field="*{nome}"
+                                                   th:classappend="${#fields.hasErrors('nome')} ? invalid"/>
+
+                                            <label for="nome"
+                                                   data-error="Nome é obrigatório">Nome</label>
                                         </div>
                                         <div class="input-field col m6 s12">
-                                            <input id="cpfOuCnpj" type="text" class="validate" name="cpfOuCnpj"/>
-                                            <label for="cpfOuCnpj">CPF/CNPJ</label>
+                                            <input id="cpfOuCnpj" type="text" class="validate" th:field="*{cpfOuCnpj}"
+                                                   th:classappend="${#fields.hasErrors('cpfOuCnpj')} ? invalid"/>
+
+                                            <label for="cpfOuCnpj"
+                                                   data-error="CPF/CNPJ é obrigatório">CPF/CNPJ</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m6 s12">
-                                            <select id="estado" type="text" class="validate" name="estado">
+                                            <select id="estado" type="text" class="validate" th:field="*{estado}">
                                                 <option value="" disabled="disabled" selected="selected">Selecione o estado</option>
                                                 <option value="PE">Pernambuco</option>
                                                 <option value="BA">Bahia</option>
                                             </select>
                                         </div>
                                         <div class="input-field col m6 s12">
-                                            <select id="cidade" type="text" class="validate" name="cidade">
+                                            <select id="cidade" type="text" class="validate" th:field="*{cidade}">
                                                 <option value="" disabled="disabled" selected="selected">Selecione a cidade</option>
                                                 <option value="Petrolina">Petrolina</option>
                                                 <option value="Juazeiro">Juazeiro</option>
@@ -47,22 +53,29 @@
 
                                     <div class="row">
                                         <div class="input-field col m6 s12">
-                                            <input id="endereco" type="text" class="validate" name="endereco"/>
-                                            <label for="endereco">Endereço</label>
+                                            <input id="endereco" type="text" class="validate" th:field="*{endereco}"
+                                                   th:classappend="${#fields.hasErrors('endereco')} ? invalid"/>
+                                            <label for="endereco"
+                                                   data-error="Endereço é obrigatório">Endereço</label>
                                         </div>
                                         <div class="input-field col m6 s12">
-                                            <input id="bairro" type="text" class="validate" name="bairro"/>
+                                            <input id="bairro" type="text" class="validate" th:field="*{bairro}"/>
                                             <label for="bairro">Bairro</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m6 s12">
-                                            <input id="telefone" type="text" class="validate" name="telefone"/>
-                                            <label for="telefone">Telefone</label>
+                                            <input id="telefone" type="text" class="validate" th:field="*{telefone}"
+                                                   th:classappend="${#fields.hasErrors('telefone')} ? invalid"/>
+                                            <label for="telefone"
+                                                   data-error="Telefone é obrigatório">Telefone</label>
                                         </div>
                                         <div class="input-field col m6 s12">
-                                            <input id="email" type="email" class="validate" name="email"/>
+                                            <input id="email" type="email" class="validate"
+                                                   th:field="*{email}"
+                                                   th:classappend="${#fields.hasErrors('email')} ? invalid"/>
+
                                             <label for="email"
                                                    data-error="Não é um e-mail válido" data-success="Certo">E-mail</label>
                                         </div>
