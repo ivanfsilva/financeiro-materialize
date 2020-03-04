@@ -62,11 +62,12 @@
                                     <td>
                                         <a  class="tooltipped" data-position="top" data-delay="50"
                                             data-tooltip="Editar"
-                                            href="#">
+                                            th:href="@{/entidades/{codigo}(codigo=${entidade.codigo})}">
                                             <i class="tiny material-icons">mode_edit</i>
                                         </a>
                                         <a class="tooltipped js-remover-entidade-btn" data-position="top"
-                                           href="#"
+                                           href="#modal-remover-entidade"
+                                           th:attr="data-codigo=${entidade.codigo}, data-nome=${entidade.nome}"
                                            data-delay="50" data-tooltip="Apagar"
                                            style="margin-left: 9px">
                                             <i class="tiny material-icons">delete</i>
@@ -85,6 +86,30 @@
         </div>
     </div>
 
+    <!-- Modal Estrutura -->
+    <div id="modal-remover-entidade" class="modal">
+        <div class="modal-content">
+            <h4>Exclusão de entidade</h4>
+            <span>Tem certeza que deseja remover a entidade ? </span>
+        </div>
+        <div class="modal-footer">
+            <form th:attr="data-url-remover=@{/entidades}" method="post">
+
+                <input type="hidden" name="_method" value="DELETE"/>
+
+                <button type="submit"
+                        class="modal-action modal-close waves-effect waves-light btn red darken-1"
+                        style="margin: 6px">Sim</button>
+
+                <a href="#!" class="modal-action modal-close waves-effect waves-light btn teal darken-3">Não</a>
+            </form>
+        </div>
+    </div>
+
 </section>
+
+<th:block layout:fragment="javascript-extra">
+    <script th:src="@{/js/financeiro.js}"></script>
+</th:block>
 </body>
 </html>

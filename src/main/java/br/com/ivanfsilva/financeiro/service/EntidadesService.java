@@ -15,4 +15,8 @@ public class EntidadesService {
         entidades.save(entidade);
     }
 
+    public void remover(Long codigo) {
+        entidades.delete(codigo);
+    }
+
 }
