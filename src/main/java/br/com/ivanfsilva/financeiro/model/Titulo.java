@@ -1,5 +1,7 @@
 package br.com.ivanfsilva.financeiro.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,12 +14,17 @@ public class Titulo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_de_emissao")
     private Date dataDeEmissao;
 
+    private String descricao;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_de_validade")
     private Date dataDeValidade;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_do_pagamento")
     private Date dataDoPagamento;
 
@@ -129,5 +136,31 @@ public class Titulo {
 
     public void setSituacao(Situacao situacao) {
         this.situacao = situacao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    @Override
+    public String toString() {
+        return "Titulo{" +
+                "codigo=" + codigo +
+                ", dataDeEmissao=" + dataDeEmissao +
+                ", descricao='" + descricao + '\'' +
+                ", dataDeValidade=" + dataDeValidade +
+                ", dataDoPagamento=" + dataDoPagamento +
+                ", valor=" + valor +
+                ", valorPago=" + valorPago +
+                ", valorOriginal=" + valorOriginal +
+                ", entidade=" + entidade +
+                ", tipoDePagamento=" + tipoDePagamento +
+                ", tipo=" + tipo +
+                ", situacao=" + situacao +
+                '}';
     }
 }

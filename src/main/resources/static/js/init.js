@@ -16,3 +16,33 @@ $(document).ready(function(){
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
 });
+
+$(document).ready(function () {
+  $('.tooltipped').tooltip({delay: 50});
+});
+
+$(document).ready(function () {
+  $('input#input_text, textarea#textarea').characterCounter();
+});
+
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
+
+$('.datepicker').pickadate({
+  monthsFull: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+  monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+  weekdaysFull: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabádo'],
+  weekdaysShort: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+  today: 'Hoje',
+  clear: 'Limpar',
+  close: 'Pronto',
+  labelMonthNext: 'Próximo mês',
+  labelMonthPrev: 'Mês anterior',
+  labelMonthSelect: 'Selecione um mês',
+  labelYearSelect: 'Selecione um ano',
+  selectMonths: true,
+  selectYears: 15,
+  format: 'dd/mm/yyyy',
+  formatsubmit: 'dd/mm/yyyy'
+});
