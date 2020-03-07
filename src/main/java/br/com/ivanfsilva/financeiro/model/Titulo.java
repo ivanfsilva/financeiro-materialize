@@ -3,6 +3,7 @@ package br.com.ivanfsilva.financeiro.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -20,6 +21,7 @@ public class Titulo {
 
     private String descricao;
 
+    @NotNull
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_de_validade")
     private Date dataDeValidade;
@@ -28,6 +30,7 @@ public class Titulo {
     @Column(name = "data_do_pagamento")
     private Date dataDoPagamento;
 
+    @NotNull
     private BigDecimal valor;
 
     @Column(name = "valor_pago")
