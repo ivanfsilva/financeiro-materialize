@@ -5,11 +5,12 @@ import br.com.ivanfsilva.financeiro.model.Tipo;
 import br.com.ivanfsilva.financeiro.model.Titulo;
 import br.com.ivanfsilva.financeiro.repository.Entidades;
 import br.com.ivanfsilva.financeiro.repository.TiposDePagamento;
+import br.com.ivanfsilva.financeiro.repository.Titulos;
 import br.com.ivanfsilva.financeiro.service.TitulosService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +34,9 @@ public class TitulosController {
     @Autowired
     private TiposDePagamento tiposDePagamento;
 
+    @Autowired
+    private Titulos titulos;
+
     @RequestMapping(value = "/novo")
     public ModelAndView novo(Titulo titulo){
         ModelAndView mv = new ModelAndView(INDEX);
@@ -55,6 +59,13 @@ public class TitulosController {
         attributes.addFlashAttribute("mensagem", "Título salvo com sucesso");
 
         return new ModelAndView("redirect:/titulos/novo");
+    }
+
+    @GetMapping
+    public ModelAndView pesquisar(Titulo titulo){
+        ModelAndView mv = new ModelAndView("titulo/PesquisarTitulos");
+        mv.addObject("titulos", titulos.findAll());
+        return mv;
     }
 
 }

@@ -1,6 +1,8 @@
 package br.com.ivanfsilva.financeiro.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tipo_de_pagamento")
@@ -11,6 +13,9 @@ public class TipoDePagamento  {
     private Long codigo;
 
     private String descricao;
+
+    @OneToMany(mappedBy = "tipoDePagamento")
+    private List<Titulo> titulos = new ArrayList<>();
 
     public Long getCodigo() {
         return codigo;
@@ -26,5 +31,13 @@ public class TipoDePagamento  {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public List<Titulo> getTitulos() {
+        return titulos;
+    }
+
+    public void setTitulos(List<Titulo> titulos) {
+        this.titulos = titulos;
     }
 }

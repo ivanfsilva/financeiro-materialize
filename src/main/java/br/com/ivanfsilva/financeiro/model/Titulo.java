@@ -43,7 +43,7 @@ public class Titulo {
     @JoinColumn(name = "entidadeId")
     private Entidade entidade;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tipo_pagamento_id")
     private TipoDePagamento tipoDePagamento;
 
