@@ -1,5 +1,7 @@
 package br.com.ivanfsilva.financeiro.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,7 @@ public class TipoDePagamento  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
+    @NotBlank(message = "Descrição deve ser informada")
     private String descricao;
 
     @OneToMany(mappedBy = "tipoDePagamento")

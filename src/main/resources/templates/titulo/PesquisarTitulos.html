@@ -19,11 +19,33 @@
 
             <div class="row">
                 <form class="col s12" method="get" th:action="@{/titulos}" th:object="${titulo}">
-                    <div class="row">
-                        <div class="input-field col m12 s12 l6">
-                            <i class="material-icons prefix">account_circle</i>
-                            <input id="icon_prefix" type="text" th:field="*{descricao}"/>
-                            <label for="icon_prefix">Informe a descrição</label>
+                    <div class="row m12 s12">
+                        <div class="card">
+                            <div class="row">
+                                <div class="card-content black-text">
+                                    <div class="input-field col m6 s12 l6">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input id="icon_prefix" type="text" th:field="*{descricao}"/>
+                                        <label for="icon_prefix">Informe a descrição</label>
+                                    </div>
+
+                                    <div class="input-field s12 col m6">
+                                        <select id="selection" class="validate" th:field="*{entidade}">
+                                            <option value="" selected="selected">Todas</option>
+                                            <option th:each="entidade : ${listaDeEntidades}"
+                                                    th:text="${entidade.nome}"
+                                                    th:value="${entidade.codigo}">Lucas Barros</option>
+                                        </select>
+                                        <label for="selection">Entidade</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-action">
+                                <button class="btn deep-purple darken-4 waves-effect waves-light" type="submit" name="action">Pesquisar
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -64,9 +86,9 @@
                                     <td th:text="${titulo.situacao.descricao}"></td>
                                     <td th:text="${titulo.tipoDePagamento.descricao}"></td>
                                     <td>
-                                        <a  class="tooltipped" data-position="top" data-delay="50"
-                                            data-tooltip="Editar"
-                                            th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}">
+                                        <a class="tooltipped" data-position="top" data-delay="50"
+                                           data-tooltip="Editar"
+                                           th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}">
                                             <i class="tiny material-icons">mode_edit</i>
                                         </a>
                                         <a class="tooltipped js-remover-título-btn" data-position="top"
@@ -79,7 +101,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="9" th:if="${#lists.isEmpty(titulos)}">Nenhuma título encontrada!</td>
+                                    <td colspan="9" th:if="${#lists.isEmpty(titulos)}">Nenhum título encontrado!</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -103,7 +125,8 @@
 
                 <button type="submit"
                         class="modal-action modal-close waves-effect waves-light btn red darken-1"
-                        style="margin: 6px">Sim</button>
+                        style="margin: 6px">Sim
+                </button>
 
                 <a href="#!" class="modal-action modal-close waves-effect waves-light btn teal darken-3">Não</a>
             </form>
