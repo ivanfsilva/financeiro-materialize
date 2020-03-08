@@ -18,7 +18,7 @@ Financeiro.TipoDePagamentoNovo = (function () {
         this.botaoSalvar.on('click', onBotaoSalvarClick.bind(this));
         this.botaoAbrirModal.on('click', onBotaoAbrirModalClick.bind(this));
 
-        // Observar o evento
+        // Observador do evento
         $('select').on('pagamentoSalvo', function () {
 
             // Atualizar o combo
@@ -29,6 +29,7 @@ Financeiro.TipoDePagamentoNovo = (function () {
     function onBotaoAbrirModalClick() {
         this.containerMensagemErro.addClass('hide');
         this.inputNovoPagamento.val('');
+        this.inputNovoPagamento.removeClass('invalid');
     }
 
     function onBotaoSalvarClick() {
@@ -49,6 +50,8 @@ Financeiro.TipoDePagamentoNovo = (function () {
         var mensagem = objeto.responseText;
         this.containerMensagemErro.removeClass('hide');
         this.containerMensagemErro.html('<i class="red-text material-icons">info</i> <span> '+ mensagem +' </span>');
+        this.inputNovoPagamento.addClass('invalid');
+        Materialize.toast("Ops! A descrição deve ser informada!", 5000, 'rounded');
     }
 
     function onPagamentoSalvo(tipoDePagamento) {

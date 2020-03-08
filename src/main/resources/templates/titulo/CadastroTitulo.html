@@ -23,18 +23,18 @@
                             <span class="card-title" th:text="${codigo == null ? 'Cadastro de título' : 'Edição de título'}">Cadastro de título</span>
 
                             <div class="row">
-                                <form id="form" method="post" th:action="@{/titulos/novo}" th:object="${titulo}" class="col s12">
+                                <form id="form-cadastro-titulo" method="post" th:action="@{/titulos/novo}" th:object="${titulo}" class="col s12">
 
                                     <div class="row">
                                         <div class="input-field s12 col m6">
-                                            <select id="selection" class="validate" th:field="*{entidade}"
-                                                    required="required">
-                                                <option value="" selected="selected">Selecione a entidade</option>
-                                                <option th:each="entidade : ${listaDeEntidades}"
-                                                        th:text="${entidade.nome}"
-                                                        th:value="${entidade.codigo}">Lucas Barros</option>
-                                            </select>
-                                            <label for="selection">Entidade</label>
+                                            <i class="material-icons prefix">textsms</i>
+                                            <input type="text" id="autocomplete-input-entidade"
+                                                   placeholder="Pesquise por nome da entidade"
+                                                   autocomplete="off"
+                                                   required="required"
+                                                   class="autocomplete"/>
+                                            <label for="autocomplete-input-entidade">Entidade</label>
+                                            <input type="hidden" name="entidade" id="entidade" value=""/>
                                         </div>
 
                                         <div class="input-field s12 col m5">
@@ -170,7 +170,7 @@
                         <input id="input-descricao-do-novo-tipo-de-pagamento" type="text" class="validate" />
 
                         <label for="input-descricao-do-novo-tipo-de-pagamento"
-                               data-error="Nome é obrigatório">Descrição</label>
+                               data-error="Descrição é obrigatória">Descrição</label>
                     </div>
                 </div>
 
@@ -186,6 +186,7 @@
 </section>
 <th:block layout:fragment="javascript-extra">
     <script th:src="@{/js/financeiro.js}"></script>
+    <script th:src="@{/js/titulo.autocomplete-estidade.js}"></script>
     <script th:src="@{/js/tipoDePagamento.cadastro-rapido.js}"></script>
 </th:block>
 

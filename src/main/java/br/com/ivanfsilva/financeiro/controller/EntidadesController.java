@@ -1,5 +1,6 @@
 package br.com.ivanfsilva.financeiro.controller;
 
+import br.com.ivanfsilva.financeiro.dto.EntidadeDTO;
 import br.com.ivanfsilva.financeiro.model.Entidade;
 import br.com.ivanfsilva.financeiro.repository.Entidades;
 import br.com.ivanfsilva.financeiro.service.EntidadesService;
@@ -9,10 +10,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/entidades")
@@ -62,6 +65,11 @@ public class EntidadesController {
     public String excluir(@PathVariable("codigo") Long codigo){
         entidadesService.remover(codigo);
         return "redirect:/entidades";
+    }
+
+    @RequestMapping("/filtro")
+    public @ResponseBody List<EntidadeDTO> filtradas(String nome){
+        return entidades.filtradas(nome.toLowerCase());
     }
 
 }

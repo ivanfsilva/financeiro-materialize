@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/titulos")
@@ -54,6 +55,7 @@ public class TitulosController {
             return novo(titulo);
         }
 
+        titulo.setDataDeEmissao(new Date());
         titulosService.salvar(titulo);
         attributes.addFlashAttribute("mensagem", "Título salvo com sucesso");
         return new ModelAndView("redirect:/titulos/novo");
