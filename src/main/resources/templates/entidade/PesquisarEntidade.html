@@ -15,6 +15,9 @@
     <div class="container">
         <div class="section">
             <!-- Colocar mensagens aqui... -->
+            <div th:include="/fragments/MensagemInfo"></div>
+            <div th:include="/fragments/MensagemErro"></div>
+
             <h4>Pesquisa de entidade</h4>
 
             <div class="row">
@@ -109,7 +112,7 @@
 </section>
 
 <th:block layout:fragment="javascript-extra">
-    <script th:src="@{/js/financeiro.js}"></script>
+    <script th:src="@{/javascript/financeiro.js}"></script>
 </th:block>
 </body>
 </html>

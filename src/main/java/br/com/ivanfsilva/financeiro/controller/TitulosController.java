@@ -55,7 +55,6 @@ public class TitulosController {
             return novo(titulo);
         }
 
-        titulo.setDataDeEmissao(new Date());
         titulosService.salvar(titulo);
         attributes.addFlashAttribute("mensagem", "Título salvo com sucesso");
         return new ModelAndView("redirect:/titulos/novo");
@@ -72,7 +71,7 @@ public class TitulosController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
     public @ResponseBody ResponseEntity<?> novoTipoDePagamento(@RequestBody @Valid TipoDePagamento tipoDePagamento,
-                                          BindingResult result){
+                                                               BindingResult result){
 
         if (result.hasErrors()){
             return ResponseEntity.badRequest().body(result.getFieldError("descricao").getDefaultMessage());
@@ -82,5 +81,22 @@ public class TitulosController {
         return ResponseEntity.ok(tipoDePagamento);
     }
 
+    @GetMapping("/{codigo}")
+    public ModelAndView editar(@PathVariable("codigo") Titulo titulo){
+        ModelAndView mv = new ModelAndView(INDEX);
+        mv.addObject("listaDeEntidades", entidades.findAll());
+        mv.addObject("todosOsTipos", Tipo.values());
+        mv.addObject("todasAsSituacoes", Situacao.values());
+        mv.addObject("tiposDePagamento", tiposDePagamento.findAll());
+        mv.addObject(titulo);
+        return mv;
+    }
+
+    @RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
+    public String excluir(@PathVariable("codigo") Long codigo, RedirectAttributes attributes){
+        titulosService.excluir(codigo);
+        attributes.addFlashAttribute("mensagem", "Título excluído com sucesso");
+        return "redirect:/titulos";
+    }
 
 }

@@ -1,5 +1,6 @@
 package br.com.ivanfsilva.financeiro.model;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -40,11 +41,11 @@ public class Entidade {
     @Column(length = 20)
     private String telefone;
 
-    @NotBlank
+    @Email
     @Column(length = 100, name = "e_mail")
     private String email;
 
-    @OneToMany(mappedBy = "entidade", orphanRemoval = true) // orphanRemoval - Não pode ter títulos sem entidade
+    @OneToMany(mappedBy = "entidade") // orphanRemoval - Não pode ter títulos sem entidade
     private List<Titulo> titulos = new ArrayList<>();
 
     public Long getCodigo() {

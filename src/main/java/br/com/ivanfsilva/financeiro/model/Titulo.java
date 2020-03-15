@@ -1,6 +1,7 @@
 package br.com.ivanfsilva.financeiro.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,6 +21,7 @@ public class Titulo {
     private Date dataDeEmissao;
 
     private String descricao;
+
 
     @NotNull
     @DateTimeFormat(pattern = "dd/MM/yyyy")

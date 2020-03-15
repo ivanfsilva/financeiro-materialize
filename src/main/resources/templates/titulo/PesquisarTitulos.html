@@ -15,6 +15,7 @@
     <div class="container">
         <div class="section">
             <!-- Colocar mensagens aqui... -->
+            <div layout:include="/fragments/MensagemInfo"></div>
             <h4>Pesquisa de título</h4>
 
             <div class="row">
@@ -91,8 +92,8 @@
                                            th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}">
                                             <i class="tiny material-icons">mode_edit</i>
                                         </a>
-                                        <a class="tooltipped js-remover-título-btn" data-position="top"
-                                           href="#modal-remover-título"
+                                        <a class="tooltipped js-remover-entidade-btn" data-position="top"
+                                           href="#modal-remover-entidade"
                                            th:attr="data-codigo=${titulo.codigo}, data-nome=${titulo.descricao}"
                                            data-delay="50" data-tooltip="Apagar"
                                            style="margin-left: 9px">
@@ -113,7 +114,7 @@
     </div>
 
     <!-- Modal Estrutura -->
-    <div id="modal-remover-título" class="modal">
+    <div id="modal-remover-entidade" class="modal">
         <div class="modal-content">
             <h4>Exclusão de título</h4>
             <span>Tem certeza que deseja remover a título ? </span>
@@ -136,7 +137,7 @@
 </section>
 
 <th:block layout:fragment="javascript-extra">
-    <script th:src="@{/javascript/financeiro.js}"></script>
+    <script th:src="@{/js/financeiro.js}"></script>
 </th:block>
 </body>
 </html>

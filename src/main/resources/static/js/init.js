@@ -26,6 +26,14 @@ $(document).ready(function () {
   $('input#input_text, textarea#textarea').characterCounter();
 });
 
+$(function () {
+  $('.js-moeda').maskMoney({
+    decimal: ',',
+    thousands: '.',
+    allowZero: true
+  });
+});
+
 $(document).ready(function(){
   $('.collapsible').collapsible();
 });

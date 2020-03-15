@@ -24,6 +24,7 @@
 
                             <div class="row">
                                 <form id="form-cadastro-titulo" method="post" th:action="@{/titulos/novo}" th:object="${titulo}" class="col s12">
+                                    <input type="hidden" th:value="*{codigo}" name="codigo"/>
 
                                     <div class="row">
                                         <div class="input-field s12 col m6">
@@ -95,7 +96,7 @@
 
                                     <div class="row">
                                         <div class="input-field s12 col m4">
-                                            <input id="valor" type="text" class="validate js-valor"
+                                            <input id="valor" type="text" class="validate js-moeda"
                                                    th:classappend="${#fields.hasErrors('valor')} ? invalid"
                                                    th:field="*{valor}"/>
 
@@ -103,14 +104,14 @@
                                         </div>
 
                                         <div class="input-field s12 col m4">
-                                            <input id="valorOriginal" type="text" class="validate js-valor"
+                                            <input id="valorOriginal" type="text" class="validate js-moeda"
                                                    th:field="*{valorOriginal}"/>
 
                                             <label for="valorOriginal">Valor original</label>
                                         </div>
 
                                         <div class="input-field s12 col m4">
-                                            <input id="valorPago" type="text" class="validate js-valor"
+                                            <input id="valorPago" type="text" class="validate js-moeda"
                                                    th:field="*{valorPago}"/>
 
                                             <label for="valorPago">Valor pago</label>

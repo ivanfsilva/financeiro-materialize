@@ -21,11 +21,11 @@ Financeiro.Autocomplete = (function () {
 
                 $('input.autocomplete').autocomplete({
                     data: entidadesSugestao,
-                    limit: 6, // The max amount of results that can be shown at once. Default: Infinity.
+                    limit: 6,
                     onAutocomplete: function(texto) {
                         onSendItem(texto);
                     },
-                    minLength: 2 // The minimum length of the input for the autocomplete to start. Default: 1.
+                    minLength: 2
                 });
 
                 function onSendItem(texto) {

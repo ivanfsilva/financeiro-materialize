@@ -14,4 +14,8 @@ public class TitulosService {
     public void salvar(Titulo titulo){
         titulos.save(titulo);
     }
+
+    public void excluir(Long codigo) {
+        titulos.delete(codigo);
+    }
 }
